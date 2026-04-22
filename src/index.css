@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Quicksand:wght@300..700&display=swap');
+
+@theme {
+  --font-fredoka: "Fredoka", sans-serif;
+  --font-quicksand: "Quicksand", sans-serif;
+
+  --color-primary-dark: #1C3D6E;
+  --color-primary: #2F6FB6;
+  --color-primary-light: #5FA3E4;
+  --color-accent: #A9CFF5;
+  --color-bg-soft: #EAF4FD;
+  --color-bg: #0f172a; 
+
+  --color-action-teal: #0D9488;
+  --color-action-teal-hover: #0F766E;
+
+  --color-action-green: #10B981;
+  --color-action-green-hover: #059669;
+}
