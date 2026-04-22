@@ -1,7 +1,23 @@
-import Home from "./pages/Home";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Home from './pages/Home';
 
-export default function App() {
+function App() {
   return (
-    <Home />
+    <Router>
+      <div className="min-h-screen bg-[#121212]">
+        <Navbar />
+
+        <main>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            
+          
+          </Routes>
+        </main>
+      </div>
+    </Router>
   );
 }
+
+export default App;
