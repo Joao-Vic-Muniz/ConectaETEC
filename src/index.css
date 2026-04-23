@@ -19,3 +19,7 @@
   --color-action-green: #10B981;
   --color-action-green-hover: #059669;
 }
+
+* {
+  scroll-behavior: smooth;
+}
