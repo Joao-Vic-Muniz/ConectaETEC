@@ -39,7 +39,7 @@ const initiatives = [
   },
   {
     title: 'Grupos de Apoio',
-    description: 'Um ambiente onde as pessoas podem se comunicar com outras pessoas, sem se sentirem pressionadas.',
+    description: 'Um ambiente onde as pessoas podem se comunicar com outras pessoas, sem se sentirem inseguras.',
     icon: HeartHandshake,
   },
   {
