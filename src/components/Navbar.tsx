@@ -25,9 +25,9 @@ export default function Navbar() {
                 </NavHashLink>
               </li>
               <li>
-                <NavHashLink smooth to="/#explorar" className="hover:text-primary-light hover:scale-105 transition-all duration-200">
+                <Link to="/explorar" className="hover:text-primary-light hover:scale-105 transition-all duration-200">
                   EXPLORAR
-                </NavHashLink>
+                </Link>
               </li>
               <li>
                 <NavHashLink to="/comunidade" className="hover:text-primary-light hover:scale-105 transition-all duration-200">
@@ -91,9 +91,9 @@ export default function Navbar() {
             </NavHashLink>
           </li>
           <li>
-            <NavHashLink smooth to="/#explorar" className="hover:text-primary-light transition-colors" onClick={() => setIsOpen(false)}>
+            <Link to="/explorar" className="hover:text-primary-light transition-colors" onClick={() => setIsOpen(false)}>
               EXPLORAR
-            </NavHashLink>
+            </Link>
           </li>
           <li>
             <NavHashLink to="/comunidade" className="hover:text-primary-light transition-colors" onClick={() => setIsOpen(false)}>

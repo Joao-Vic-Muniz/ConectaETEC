@@ -1,5 +1,6 @@
 import { CalendarDays, BookOpen, Map } from "lucide-react";
 import Logo from "../assets/Logo.png";
+import { Link } from "react-router-dom";
 
 export default function Home() {
   return (
@@ -37,12 +38,12 @@ export default function Home() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center md:justify-start">
-              <a
-                href="#explorar"
+              <Link
+                to="/explorar"
                 className="inline-block text-center bg-primary hover:bg-primary-light text-white px-8 md:px-12 py-3 md:py-4 rounded-full font-fredoka text-base md:text-lg font-bold transition-all duration-300 shadow-lg shadow-primary/20 cursor-pointer active:scale-95"
               >
                 Explorar
-              </a>
+              </Link>
 
               <a
                 href="#comunidade"
