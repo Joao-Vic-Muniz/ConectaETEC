@@ -103,7 +103,7 @@ export default function Navbar() {
                   EXPLORAR
                 </Link>
               </li>
-              <li>
+              <li>  
                 <Link 
                   to="/comunidade" 
                   onClick={() => setIsOpen(false)}

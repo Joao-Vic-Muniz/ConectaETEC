@@ -17,9 +17,9 @@ const courses: Course[] = [
     intro:
       "Uma formação moderna para quem quer criar soluções tecnológicas e atuar no universo digital.",
     cards: [
-      "Desenvolvimento de soluções digitais modernas",
-      "Atuação em empresas de tecnologia",
-      "Base sólida para o mercado de inovação",
+      "Aprendizado de linguagens de programação",
+      "Aprofundamento em conhecimentos da web",
+      "Matérias técnicas com atividades teóricas e práticas em laboratórios",
     ],
     icon: <Zap className="w-6 h-6" />,
     gradient: "from-cyan-500 via-blue-500 to-purple-500",
@@ -31,9 +31,9 @@ const courses: Course[] = [
     intro:
       "Ideal para quem deseja atuar na organização, planejamento e gestão de empresas.",
     cards: [
-      "Gestão estratégica e organizacional",
-      "Planejamento e eficiência empresarial",
-      "Visão ampla do ambiente corporativo",
+      "Aprendizado de rotinas administrativas e financeiras",
+      "Matérias de gestão com foco em planejamento estratégico",
+      "Simulações empresariais com atividades teóricas e práticas",
     ],
     icon: <Users className="w-6 h-6" />,
     gradient: "from-emerald-500 via-teal-500 to-cyan-500",
@@ -45,9 +45,9 @@ const courses: Course[] = [
     intro:
       "Perfeito para mentes criativas que querem desenvolver experiências interativas.",
     cards: [
-      "Criação de experiências digitais",
-      "Mercado criativo em expansão",
-      "Integração entre criatividade e tecnologia",
+      "Desenvolvimento de mecânicas e narrativas de jogos",
+      "Aprofundamento em engines e design de interface",
+      "Projetos criativos com atividades práticas em laboratórios",
     ],
     icon: <Rocket className="w-6 h-6" />,
     gradient: "from-pink-500 via-rose-500 to-red-500",
@@ -59,9 +59,9 @@ const courses: Course[] = [
     intro:
       "Curso voltado para criação de ambientes funcionais, harmônicos e inovadores.",
     cards: [
-      "Projetos funcionais e criativos",
-      "Ambientes planejados com estética",
-      "Aplicação prática em espaços reais",
+      "Criação de projetos de iluminação e ergonomia",
+      "Aprofundamento em desenho técnico e modelagem 3D",
+      "Estudos de layout com atividades práticas e oficinas de design",
     ],
     icon: <Palette className="w-6 h-6" />,
     gradient: "from-violet-500 via-purple-500 to-pink-500",
@@ -70,9 +70,29 @@ const courses: Course[] = [
 ];
 
 export default function CursosEtecPage() {
+  const easeInOutQuad = (t: number) => t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+
+  const smoothScrollTo = (element: HTMLElement, duration = 1000) => {
+    const start = window.pageYOffset;
+    const end = element.offsetTop;
+    const distance = end - start;
+    let startTime: number | null = null;
+
+    const animation = (currentTime: number) => {
+      if (startTime === null) startTime = currentTime;
+      const timeElapsed = currentTime - startTime;
+      const progress = Math.min(timeElapsed / duration, 1);
+      const ease = easeInOutQuad(progress);
+      window.scrollTo(0, start + distance * ease);
+      if (progress < 1) requestAnimationFrame(animation);
+    };
+
+    requestAnimationFrame(animation);
+  };
+
   const scrollToSection = (slug: string) => {
     const section = document.getElementById(slug);
-    if (section) section.scrollIntoView({ behavior: "smooth" });
+    if (section) smoothScrollTo(section, 1200);
   };
 
   return (
@@ -109,15 +129,10 @@ export default function CursosEtecPage() {
             className="group inline-flex items-center gap-3 px-8 py-5 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white font-bold shadow-lg shadow-cyan-500/40 hover:shadow-cyan-500/60 transition-all duration-300 transform hover:scale-105 active:scale-95"
           >
             Explorar cursos
-            <ArrowDown className="w-5 h-5 group-hover:translate-y-1 transition-transform" />
+            <ArrowDown className="w-5 h-5 group-hover:translate-y-1 transition-transform " />
           </button>
         </div>
 
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
-          <span className="text-cyan-400/60 text-sm">Scroll para descobrir</span>
-          <ArrowDown className="w-5 h-5 text-cyan-400/60" />
-        </div>
       </section>
 
       {/* COURSES */}
@@ -144,11 +159,11 @@ export default function CursosEtecPage() {
             {/* Left Content */}
             <div className="space-y-8">
               <div>
-                <span className={`text-${course.accentColor}-400 text-sm uppercase tracking-[0.3em] font-bold block mb-4`}>
+                <span className={`text-sm uppercase tracking-[0.3em] font-bold block mb-4 ${course.accentColor === 'cyan' ? 'text-cyan-400' : course.accentColor === 'emerald' ? 'text-emerald-400' : course.accentColor === 'pink' ? 'text-pink-400' : 'text-violet-400'}`}>
                   ↪ Curso {index + 1}
                 </span>
 
-                <h2 className={`text-5xl md:text-7xl font-black leading-tight bg-clip-text text-transparent bg-gradient-to-b from-white to-${course.accentColor}-300 mb-6`}>
+                <h2 className={`text-5xl md:text-7xl font-black leading-tight bg-clip-text text-transparent mb-6 w-2xl ${course.accentColor === 'cyan' ? 'bg-gradient-to-b from-white to-cyan-300' : course.accentColor === 'emerald' ? 'bg-gradient-to-b from-white to-emerald-300' : course.accentColor === 'pink' ? 'bg-gradient-to-b from-white to-pink-300' : 'bg-gradient-to-b from-white to-violet-300'}`}>
                   {course.title}
                 </h2>
 
@@ -160,7 +175,7 @@ export default function CursosEtecPage() {
               {index < courses.length - 1 && (
                 <button
                   onClick={() => scrollToSection(courses[index + 1].slug)}
-                  className="group inline-flex items-center gap-2 px-7 py-4 rounded-xl bg-gradient-to-r from-white/10 to-white/5 border border-white/20 hover:border-cyan-400/60 hover:bg-gradient-to-r hover:from-cyan-500/20 hover:to-blue-500/20 transition-all duration-300 backdrop-blur-md font-semibold shadow-lg hover:shadow-cyan-500/20"
+                  className="group inline-flex items-center gap-2 px-7 py-4 rounded-xl bg-gradient-to-r from-white/10 to-white/5 border border-white/20 hover:border-cyan-400/60 hover:bg-gradient-to-r hover:from-cyan-500/20 hover:to-blue-500/20 transition-all duration-500 backdrop-blur-md font-semibold shadow-lg hover:shadow-cyan-500/20"
                 >
                   Próximo curso
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -173,18 +188,17 @@ export default function CursosEtecPage() {
               {course.cards.map((card, i) => (
                 <div
                   key={i}
-                  className={`group relative overflow-hidden rounded-2xl border bg-gradient-to-br backdrop-blur-xl p-8 transition-all duration-500 hover:-translate-y-3 cursor-pointer shadow-2xl hover:shadow-${course.accentColor}-500/30`}
+                  className={`group relative overflow-hidden rounded-2xl border bg-gradient-to-br backdrop-blur-xl p-8 transition-all duration-700 hover:-translate-y-3 cursor-pointer shadow-2xl ${course.accentColor === 'cyan' ? 'hover:shadow-cyan-500/30 border-cyan-500/50' : course.accentColor === 'emerald' ? 'hover:shadow-emerald-500/30 border-emerald-500/50' : course.accentColor === 'pink' ? 'hover:shadow-pink-500/30 border-pink-500/50' : 'hover:shadow-violet-500/30 border-violet-500/50'}`}
                   style={{
                     background: `linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%)`,
-                    borderColor: `var(--${course.accentColor}-color)`,
                     borderWidth: '1px',
                   }}
                 >
                   {/* Animated Gradient Border */}
-                  <div className={`absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 p-[1px] bg-gradient-to-br ${course.gradient}`} style={{ zIndex: -1 }} />
+                  <div className={`absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 p-[1px] bg-gradient-to-br ${course.gradient}`} style={{ zIndex: -1 }} />
 
                   {/* Glow Background on Hover */}
-                  <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br ${course.gradient}`} style={{ opacity: 0.05, borderRadius: '1.5rem' }} />
+                  <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-gradient-to-br ${course.gradient}`} style={{ opacity: 0.05, borderRadius: '1.5rem' }} />
 
                   {/* Top Accent Line */}
                   <div className={`absolute top-0 left-0 h-1.5 w-full bg-gradient-to-r ${course.gradient} opacity-70 group-hover:opacity-100`} />
@@ -193,14 +207,10 @@ export default function CursosEtecPage() {
                   <div className="relative z-10 space-y-4">
                     {/* Icon Circle with Animation */}
                     <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br ${course.gradient} p-0.5`}>
-                      <div className="w-full h-full rounded-2xl bg-[#0a1628] flex items-center justify-center text-${course.accentColor}-300 group-hover:text-white transition-colors shadow-inner">
+                      <div className={`w-full h-full rounded-2xl bg-[#0a1628] flex items-center justify-center group-hover:text-white transition-colors shadow-inner ${course.accentColor === 'cyan' ? 'text-cyan-300' : course.accentColor === 'emerald' ? 'text-emerald-300' : course.accentColor === 'pink' ? 'text-pink-300' : 'text-violet-300'}`}>
                         {course.cards.indexOf(card) + 1}
                       </div>
                     </div>
-
-                    <h3 className="text-xl font-bold text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-cyan-300 transition-all duration-300">
-                      Destaque {i + 1}
-                    </h3>
 
                     <p className="text-white/65 leading-relaxed text-base font-light group-hover:text-white/80 transition-colors">
                       {card}
@@ -216,79 +226,6 @@ export default function CursosEtecPage() {
         </section>
       ))}
 
-      {/* Global Styles */}
-      <style>{`
-        @keyframes float {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(30px); }
-        }
-
-        .animate-float {
-          animation: float 6s ease-in-out infinite;
-        }
-
-        .delay-700 {
-          animation-delay: 0.7s;
-        }
-
-        .delay-1000 {
-          animation-delay: 1s;
-        }
-
-        .bg-grid-pattern {
-          background-image:
-            linear-gradient(0deg, transparent 24%, rgba(255, 255, 255, 0.05) 25%, rgba(255, 255, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, 0.05) 75%, rgba(255, 255, 255, 0.05) 76%, transparent 77%, transparent),
-            linear-gradient(90deg, transparent 24%, rgba(255, 255, 255, 0.05) 25%, rgba(255, 255, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, 0.05) 75%, rgba(255, 255, 255, 0.05) 76%, transparent 77%, transparent);
-          background-size: 60px 60px;
-        }
-
-        /* Gradient text */
-        .bg-clip-text {
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-        }
-
-        /* Smooth scroll */
-        html {
-          scroll-behavior: smooth;
-        }
-
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-          width: 12px;
-        }
-
-        ::-webkit-scrollbar-track {
-          background: rgba(255, 255, 255, 0.02);
-        }
-
-        ::-webkit-scrollbar-thumb {
-          background: rgba(6, 182, 212, 0.3);
-          border-radius: 6px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-          background: rgba(6, 182, 212, 0.5);
-        }
-
-        @supports (animation-timeline: view()) {
-          .animate-in {
-            animation: slideInUp 0.8s ease-out forwards;
-          }
-        }
-
-        @keyframes slideInUp {
-          from {
-            opacity: 0;
-            transform: translateY(40px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-      `}</style>
     </main>
   );
 }
