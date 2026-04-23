@@ -1,23 +1,8 @@
 import { CalendarDays, BookOpen, Map, ArrowDown, Sparkles } from "lucide-react";
 import Logo from "../assets/Logo.png";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
 
 export default function Home() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
-
-  const scrollToSection = (slug: string) => {
-    const section = document.getElementById(slug);
-    if (section) section.scrollIntoView({ behavior: "smooth" });
-  };
 
   return (
     <div className="w-full font-quicksand bg-gradient-to-b from-[#07111f] via-[#0a1628] to-[#07111f] text-white overflow-hidden relative">

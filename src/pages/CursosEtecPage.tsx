@@ -1,5 +1,4 @@
 import { ArrowDown, ArrowRight, Zap, Users, Rocket, Palette } from "lucide-react";
-import { useState, useEffect } from "react";
 
 type Course = {
   title: string;
@@ -71,17 +70,6 @@ const courses: Course[] = [
 ];
 
 export default function CursosEtecPage() {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
-
   const scrollToSection = (slug: string) => {
     const section = document.getElementById(slug);
     if (section) section.scrollIntoView({ behavior: "smooth" });
