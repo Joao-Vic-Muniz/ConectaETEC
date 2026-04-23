@@ -34,17 +34,17 @@ const stats = [
 const initiatives = [
   {
     title: 'Mentoria Entre Alunos',
-    description: 'Alunos mais experientes podem ajudam os novos a se adaptarem às novidades da ETEC na questão de matérias e desafios.',
+    description: 'Uma conexão entre alunos mais novos e alunos mais experientes para resolver as dúvidas e também fazer um ambiente mais acolhedor.',
     icon: Users,
   },
   {
     title: 'Grupos de Apoio',
-    description: 'Rodas de conversas e grupos para pessoas que possuem dificuldade em socializar ou de se adaptar a ambientes novos.',
+    description: 'Um ambiente onde as pessoas podem se comunicar com outras pessoas, sem se sentirem pressionadas.',
     icon: HeartHandshake,
   },
   {
     title: 'Atividades de Lazer',
-    description: 'Atividades permitidas pela escola para promover a integração e o desenvolvimento dos alunos dentro da escola através de uma forma mais dinâmica.',
+    description: 'Atividades permitidas pela administração para lazer dos alunos, como por exemplo a integração e a festa junina.',
     icon: Sparkles,
   },
 ];

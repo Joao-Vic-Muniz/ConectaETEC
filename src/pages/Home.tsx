@@ -132,8 +132,8 @@ export default function Home() {
                 </h3>
 
                 <p className="text-white/65 leading-relaxed text-base font-light group-hover:text-white/80 transition-colors">
-                  Veja os principais eventos da escola como a Semana Paulo Freire,
-                  TechWeek e Feira do Empreendedor.
+                  A ETEC propõe vários eventos ao longo do ano, incluindo
+                  Semana Paulo Freire, TechWeek e Hackaton.
                 </p>
 
                 {/* Floating Icon on Hover */}
@@ -165,8 +165,8 @@ export default function Home() {
                 </h3>
 
                 <p className="text-white/65 leading-relaxed text-base font-light group-hover:text-white/80 transition-colors">
-                  Conheça algumas das principais disciplinas oferecidas pelos
-                  cursos e também o que é ensinado em cada uma delas.
+                  Conheça as matérias técnicas de cada curso, 
+                  vendo alguns destaque sobre elas.
                 </p>
 
                 {/* Floating Icon on Hover */}
@@ -194,12 +194,12 @@ export default function Home() {
                 </div>
 
                 <h3 className="text-xl font-bold text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-cyan-300 transition-all duration-300">
-                  Excursões
+                  Visitas Técnicas
                 </h3>
 
                 <p className="text-white/65 leading-relaxed text-base font-light group-hover:text-white/80 transition-colors">
-                  A ETEC também costuma passear bastante por ai, indo direto para
-                  diversos eventos como BGS, Bienal do Livro e muito mais.
+                  A ETEC faz várias visitas técnicas ao longo do ano,
+                  como por exemplo a BGS e Hopi Hari.
                 </p>
 
                 {/* Floating Icon on Hover */}
