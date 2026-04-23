@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { NavHashLink } from "react-router-hash-link";
 import { Menu, X } from "lucide-react";
-import Logo from "../assets/Logo.png";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,7 +14,9 @@ export default function Navbar() {
           {/* Logo */}
           <div className="flex-1">
             <NavHashLink smooth to="/#home" className="hover:opacity-80 transition-opacity">
-              <img src={Logo} alt="Logo" className="h-10 object-contain" />
+              <h2 className="text-2xl font-black text-white leading-tight tracking-tighter italic bg-clip-text text-transparent bg-gradient-to-b from-white via-cyan-200 to-blue-400">
+                Conecta ETEC
+              </h2> 
             </NavHashLink>
           </div>
 

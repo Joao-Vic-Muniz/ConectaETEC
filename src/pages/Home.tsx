@@ -1,5 +1,5 @@
 import { CalendarDays, BookOpen, Map, ArrowDown, Sparkles } from "lucide-react";
-import Logo from "../assets/Logo.png";
+import homeImg from "../assets/images/homeImg.jpg";
 import { Link } from "react-router-dom";
 
 export default function Home() {
@@ -71,18 +71,13 @@ export default function Home() {
           <div className="flex-1 z-10 flex justify-center relative mt-8 md:mt-0">
             <div className="absolute w-[120%] h-[120%] bg-gradient-to-br from-cyan-500/20 via-blue-500/10 to-purple-500/20 blur-[100px] md:blur-[120px] rounded-full animate-pulse"></div>
             <img
-              src={Logo}
-              alt="Logo"
-              className="relative w-full max-w-xs md:max-w-md lg:max-w-lg object-contain animate-float hover:scale-105 transition-transform duration-500"
+              src={homeImg}
+              alt="Home"
+              className="relative w-full max-w-xs md:max-w-md lg:max-w-lg object-contain animate-float hover:scale-105 transition-transform duration-500 rounded-2xl shadow-2xl shadow-cyan-500/30"
             />
           </div>
         </div>
 
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
-          <span className="text-cyan-400/60 text-sm">Scroll para descobrir</span>
-          <ArrowDown className="w-5 h-5 text-cyan-400/60" />
-        </div>
       </section>
 
       {/* Explorar */}
