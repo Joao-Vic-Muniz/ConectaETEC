@@ -1,4 +1,4 @@
-import { CalendarDays, BookOpen, Map, ArrowDown, Sparkles } from "lucide-react";
+import { CalendarDays, BookOpen, Map, Sparkles } from "lucide-react";
 import homeImg from "../assets/images/homeImg.jpg";
 import { Link } from "react-router-dom";
 
