@@ -5,7 +5,6 @@ import Explore from "./pages/Explore";
 import Comunity from "./pages/Comunity";
 import Auth from "./pages/Auth";
 import CursosEtecPage from "./pages/CursosEtecPage";
-import CursoDetalhe from "./pages/CursoDetalhe";
 
 function App() {
   return (
@@ -22,7 +21,6 @@ function App() {
 
             {/* Cursos */}
             <Route path="/cursos" element={<CursosEtecPage />} />
-            <Route path="/cursos/:slug" element={<CursoDetalhe />} />
           </Routes>
         </main>
       </div>
