@@ -141,7 +141,7 @@ export default function Home() {
 
                 <p className="text-white/65 leading-relaxed text-base font-light group-hover:text-white/80 transition-colors">
                   Conheça as matérias técnicas de cada curso, 
-                  vendo alguns destaque sobre elas.
+                  vendo alguns destaques sobre elas.
                 </p>
 
                 <div className="absolute -top-12 -right-12 w-32 h-32 rounded-full bg-gradient-to-br from-white/20 to-transparent blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />

@@ -356,30 +356,6 @@ export default function Explore() {
         </div>
       </section>
 
-      {/* ── CTA ── */}
-      <section className="px-6 pb-24">
-        <div className="max-w-screen-xl mx-auto">
-          <div className="relative bg-gradient-to-br from-primary/12 to-primary-light/[0.06] border border-primary/25 rounded-3xl p-12 md:p-20 text-center overflow-hidden transition-all duration-300 hover:border-primary/45 hover:shadow-2xl hover:shadow-primary/20">
-            {/* Decorative orbs inside box */}
-            <div className="pointer-events-none absolute top-[-60px] right-[-60px] w-60 h-60 rounded-full bg-primary-light/10 blur-[70px]" />
-            <div className="pointer-events-none absolute bottom-[-40px] left-[-40px] w-48 h-48 rounded-full bg-primary/12 blur-[60px]" />
-
-            <div className="relative z-10">
-              <h2 className="font-fredoka font-bold text-4xl md:text-5xl text-white tracking-tight mb-4">
-                Quer compartilhar seu projeto?
-              </h2>
-              <p className="text-white/50 text-base md:text-lg font-light max-w-lg mx-auto leading-relaxed mb-8">
-                Cadastre seu projeto, ideia ou oportunidade na plataforma Conecta ETEC e conecte-se com pessoas incríveis.
-              </p>
-              <button className="inline-flex items-center gap-2.5 bg-gradient-to-r from-primary to-primary-light hover:from-primary-light hover:to-accent text-white px-10 py-4 rounded-xl font-fredoka font-bold text-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-primary/50">
-                <Plus className="w-5 h-5" />
-                Enviar Projeto
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-
     </div>
   );
 }

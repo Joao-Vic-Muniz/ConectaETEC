@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
+import { HashLink } from "react-router-hash-link";
 import {
   ShieldCheck,
   Users,
   HeartHandshake,
-  Sparkles,
   TrendingUp,
   Award,
   Lightbulb,
@@ -11,6 +11,7 @@ import {
   Brain,
   Heart,
   MessageCircle,
+  Sparkles,
   BookOpen,
 } from "lucide-react";
 import ChatAI from "../components/ChatAI";
@@ -104,10 +105,14 @@ export default function Comunity() {
               para nossos alunos, fortalecendo a comunidade e garantindo que
               ninguém fique para trás.
             </p>
-            <button className="inline-flex items-center gap-2 bg-primary hover:bg-primary-light text-white px-8 md:px-12 py-3 md:py-4 rounded-full font-fredoka font-bold transition-all duration-300 shadow-lg shadow-primary/20 active:scale-95">
-              Participe Agora
+            <HashLink
+              smooth
+              to="#apoio"
+              className="inline-flex items-center gap-2 bg-primary hover:bg-primary-light text-white px-8 md:px-12 py-3 md:py-4 rounded-full font-fredoka font-bold transition-all duration-300 shadow-lg shadow-primary/20 active:scale-95"
+            >
+              Veja mais
               <Sparkles size={20} />
-            </button>
+            </HashLink>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12">
@@ -183,7 +188,10 @@ export default function Comunity() {
         </div>
       </section>
 
-      <section className="py-20 md:py-32 px-4 relative overflow-hidden animate-section">
+      <section
+        className="py-20 md:py-32 px-4 relative overflow-hidden animate-section"
+        id="apoio"
+      >
         <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-purple-500/5 via-transparent to-transparent pointer-events-none"></div>
         <div className="absolute -left-20 top-1/2 w-80 h-80 bg-purple-500/10 blur-3xl rounded-full"></div>
         <div className="absolute -right-20 bottom-1/2 w-80 h-80 bg-pink-500/10 blur-3xl rounded-full"></div>
