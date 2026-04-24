@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import {
   Eye,
   EyeOff,
@@ -8,7 +7,6 @@ import {
   User,
   ArrowRight,
   Globe,
-  AlertCircle,
   CheckCircle,
 } from "lucide-react";
 
@@ -32,7 +30,6 @@ const mockGoogleAuth = () => {
 };
 
 export default function Auth() {
-  const navigate = useNavigate();
 
   const [isLogin, setIsLogin] = useState(true);
   const [loading, setLoading] = useState(false);
@@ -41,7 +38,6 @@ export default function Auth() {
   const [socialLoading, setSocialLoading] = useState(false);
 
   const [showPassword, setShowPassword] = useState(false);
-  const [showConfirm, setShowConfirm] = useState(false);
 
   const [formData, setFormData] = useState({
     name: "",

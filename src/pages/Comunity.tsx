@@ -15,29 +15,6 @@ import {
 } from "lucide-react";
 import ChatAI from "../components/ChatAI";
 
-const faqs = [
-  {
-    question: "O que é evasão escolar e por que acontece?",
-    answer:
-      "Evasão escolar é o abandono precoce dos estudos por parte de alunos. Ela ocorre por motivos financeiros, falta de conexão com a escola, insuficiência de apoio familiar ou dificuldades acadêmicas.",
-  },
-  {
-    question: "Como a comunidade pode ajudar a reduzir a evasão?",
-    answer:
-      "Ao criar um ambiente acolhedor, oferecer mentorias, divulgar oportunidades e promover apoio emocional, a comunidade fortalece o vínculo do aluno com a escola.",
-  },
-  {
-    question: "Quais sinais avisam que um aluno corre risco?",
-    answer:
-      "Faltas frequentes, queda no rendimento, isolamento social e desmotivação são sinais importantes de que o aluno pode precisar de ajuda extra.",
-  },
-  {
-    question: "Quais são as ações mais efetivas?",
-    answer:
-      "Programas de mentoria, acolhimento inicial, atividades extracurriculares, suporte psicológico e integração social são as mais eficazes.",
-  },
-];
-
 const stats = [
   {
     label: "Redução de Evasão",
@@ -87,7 +64,6 @@ const initiatives = [
 ];
 
 export default function Comunity() {
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
