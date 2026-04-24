@@ -10,39 +10,50 @@ export default function Navbar() {
     <>
       <nav className="fixed top-0 left-0 w-full z-50 px-6 md:px-8 py-4 bg-gradient-to-b from-[#0b1120]/95 to-[#0b1120]/90 backdrop-blur-lg border-b border-cyan-500/10 font-quicksand">
         <div className="flex items-center w-full justify-between">
-          
-          {/* Logo */}
           <div className="flex-1">
-            <NavHashLink smooth to="/#home" className="hover:opacity-80 transition-opacity">
-              <h2 className="text-2xl font-black text-white leading-tight tracking-tighter italic bg-clip-text text-transparent bg-gradient-to-b from-white via-cyan-200 to-blue-400">
+            <div className="select-none cursor-default">
+              <h2 className="text-2xl font-black italic logo-conecta leading-tight tracking-tighter">
                 Conecta ETEC
-              </h2> 
-            </NavHashLink>
+              </h2>
+            </div>
           </div>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex flex-1 justify-center">
             <ul className="flex items-center gap-8 font-semibold text-white/80">
               <li>
-                <NavHashLink smooth to="/#home" className="hover:text-cyan-400 transition-all duration-200">
+                <NavHashLink
+                  smooth
+                  to="/#home"
+                  className="hover:text-cyan-400 transition-all duration-200"
+                >
                   INÍCIO
                 </NavHashLink>
               </li>
 
               <li>
-                <Link to="/explorar" className="hover:text-cyan-400 transition-all duration-200">
+                <Link
+                  to="/explorar"
+                  className="hover:text-cyan-400 transition-all duration-200"
+                >
                   EXPLORAR
                 </Link>
               </li>
 
               <li>
-                <Link to="/comunidade" className="hover:text-cyan-400 transition-all duration-200">
+                <Link
+                  to="/comunidade"
+                  className="hover:text-cyan-400 transition-all duration-200"
+                >
                   COMUNIDADE
                 </Link>
               </li>
 
               <li>
-                <Link to="/cursos" className="hover:text-cyan-400 transition-all duration-200">
+                <Link
+                  to="/cursos"
+                  className="hover:text-cyan-400 transition-all duration-200"
+                >
                   CURSOS
                 </Link>
               </li>
@@ -86,9 +97,9 @@ export default function Navbar() {
           <div className="p-6 space-y-4">
             <ul className="flex flex-col gap-4">
               <li>
-                <NavHashLink 
-                  smooth 
-                  to="/#home" 
+                <NavHashLink
+                  smooth
+                  to="/#home"
                   onClick={() => setIsOpen(false)}
                   className="block text-white font-semibold hover:text-cyan-400 hover:translate-x-2 transition-all duration-200 py-3 px-4 rounded-lg hover:bg-white/5"
                 >
@@ -96,17 +107,17 @@ export default function Navbar() {
                 </NavHashLink>
               </li>
               <li>
-                <Link 
-                  to="/explorar" 
+                <Link
+                  to="/explorar"
                   onClick={() => setIsOpen(false)}
                   className="block text-white font-semibold hover:text-cyan-400 hover:translate-x-2 transition-all duration-200 py-3 px-4 rounded-lg hover:bg-white/5"
                 >
                   EXPLORAR
                 </Link>
               </li>
-              <li>  
-                <Link 
-                  to="/comunidade" 
+              <li>
+                <Link
+                  to="/comunidade"
                   onClick={() => setIsOpen(false)}
                   className="block text-white font-semibold hover:text-cyan-400 hover:translate-x-2 transition-all duration-200 py-3 px-4 rounded-lg hover:bg-white/5"
                 >
@@ -114,8 +125,8 @@ export default function Navbar() {
                 </Link>
               </li>
               <li>
-                <Link 
-                  to="/cursos" 
+                <Link
+                  to="/cursos"
                   onClick={() => setIsOpen(false)}
                   className="block text-white font-semibold hover:text-cyan-400 hover:translate-x-2 transition-all duration-200 py-3 px-4 rounded-lg hover:bg-white/5"
                 >

@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ShieldCheck, Users, HeartHandshake, Sparkles, TrendingUp, Award, Lightbulb, Target } from 'lucide-react';
+import { ShieldCheck, Users, HeartHandshake, Sparkles, TrendingUp, Award, Lightbulb, Target, Brain, Heart, MessageCircle, BookOpen } from 'lucide-react';
+import ChatAI from '../components/ChatAI';
 
 const faqs = [
   {
@@ -50,7 +51,8 @@ const initiatives = [
 ];
 
 export default function Comunity() {
-  const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [isChatOpen, setIsChatOpen] = useState(false);
 
   return (
     <main className="w-full min-h-screen bg-bg text-white font-quicksand">
@@ -208,19 +210,21 @@ export default function Comunity() {
                 onClick={() => setOpenFaq(openFaq === index ? null : index)}
                 className="group w-full text-left"
               >
-                <div className="rounded-[1.5rem] border border-white/10 bg-white/5 backdrop-blur-sm p-6 hover:bg-white/10 transition-all duration-300 overflow-hidden">
+                <div className={`rounded-[1.5rem] border border-white/10 bg-white/5 backdrop-blur-sm p-6 hover:bg-white/10 transition-all duration-300 overflow-hidden ${openFaq === index ? 'bg-white/10' : ''}`}>
                   <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/5 to-primary/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   
                   <div className="relative z-10 flex items-start justify-between gap-4">
                     <h3 className="font-fredoka font-semibold text-lg text-white pr-4">{faq.question}</h3>
-                    <span className={`text-primary text-2xl font-light flex-shrink-0 transition-transform duration-300 ${openFaq === index ? 'rotate-180' : ''}`}>
+                    <span className={`text-primary text-2xl font-light flex-shrink-0 transition-transform duration-300 ${openFaq === index ? 'rotate-45' : ''}`}>
                       +
                     </span>
                   </div>
 
                   {openFaq === index && (
-                    <div className="mt-6 pt-6 border-t border-white/10 relative z-10 animate-fade-in">
-                      <p className="text-white/70 leading-relaxed">{faq.answer}</p>
+                    <div className="mt-4 pt-4 border-t border-white/10 relative z-10 overflow-hidden">
+                      <div className="animate-faq-open">
+                        <p className="text-white/70 leading-relaxed">{faq.answer}</p>
+                      </div>
                     </div>
                   )}
                 </div>
@@ -230,26 +234,114 @@ export default function Comunity() {
         </div>
       </section>
 
-      {/* CTA Final */}
-      <section className="py-20 md:py-32 px-4 relative">
-        <div className="absolute inset-0 bg-gradient-to-t from-primary/10 to-transparent pointer-events-none"></div>
+      {/* Saúde Mental e Psicologia */}
+      <section className="py-20 md:py-32 px-4 relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-purple-500/5 via-transparent to-transparent pointer-events-none"></div>
+        <div className="absolute -left-20 top-1/2 w-80 h-80 bg-purple-500/10 blur-3xl rounded-full"></div>
+        <div className="absolute -right-20 bottom-1/2 w-80 h-80 bg-pink-500/10 blur-3xl rounded-full"></div>
         
-        <div className="max-w-4xl mx-auto relative z-10 text-center space-y-8">
-          <div className="space-y-4">
-            <h2 className="font-fredoka text-4xl md:text-5xl font-bold">Quer conversar agora?</h2>
-            <p className="text-xl text-white/70">Que tal um assistente virtual para te ajudar</p>
+        <div className="max-w-screen-2xl mx-auto relative z-10">
+          <div className="text-center space-y-4 mb-16">
+            <span className="inline-flex items-center gap-2 rounded-full bg-purple-500/15 px-4 py-2 text-sm font-semibold text-purple-400 animate-fade-in">
+              <Brain size={18} />
+              Saúde Mental
+            </span>
+            <h2 className="font-fredoka text-4xl md:text-5xl font-bold">A importância do apoio psicológico</h2>
+            <p className="text-lg text-white/70 max-w-2xl mx-auto">
+              A saúde mental é fundamental para o sucesso acadêmico. Entendemos que cada aluno enfrenta desafios únicos.
+            </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-primary hover:bg-primary-light text-white px-10 py-4 rounded-full font-fredoka font-bold transition-all duration-300 shadow-lg shadow-primary/20 active:scale-95">
-              Participar Agora
-            </button>
-            <button className="border border-white/20 hover:border-white/40 text-white px-10 py-4 rounded-full font-fredoka font-bold transition-all duration-300">
-              Saber Mais
-            </button>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Card 1 */}
+            <div className="group relative overflow-hidden rounded-[2rem] border border-purple-500/20 bg-purple-500/5 backdrop-blur-sm p-8 hover:bg-purple-500/10 transition-all duration-300">
+              <div className="absolute -top-20 -right-20 w-40 h-40 bg-purple-500/20 rounded-full blur-2xl group-hover:bg-purple-500/30 transition-colors duration-300"></div>
+              
+              <div className="relative z-10 space-y-4">
+                <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-purple-500/20 group-hover:bg-purple-500/30 transition-all duration-300 group-hover:scale-110">
+                  <Heart size={32} className="text-purple-400" />
+                </div>
+                <h3 className="font-fredoka text-2xl font-bold text-white">Por que buscar ajuda?</h3>
+                <p className="text-white/70 leading-relaxed">
+                  Muitos alunos enfrentam ansiedade, estresse, depressão ou outros desafios emocionais que podem impactar diretamente no desempenho escolar e na qualidade de vida.
+                </p>
+              </div>
+            </div>
+
+            {/* Card 2 */}
+            <div className="group relative overflow-hidden rounded-[2rem] border border-pink-500/20 bg-pink-500/5 backdrop-blur-sm p-8 hover:bg-pink-500/10 transition-all duration-300">
+              <div className="absolute -top-20 -right-20 w-40 h-40 bg-pink-500/20 rounded-full blur-2xl group-hover:bg-pink-500/30 transition-colors duration-300"></div>
+              
+              <div className="relative z-10 space-y-4">
+                <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-pink-500/20 group-hover:bg-pink-500/30 transition-all duration-300 group-hover:scale-110">
+                  <MessageCircle size={32} className="text-pink-400" />
+                </div>
+                <h3 className="font-fredoka text-2xl font-bold text-white">Conversa confidencial</h3>
+                <p className="text-white/70 leading-relaxed">
+                  Aqui você pode conversar abertamente sobre seus sentimentos. Nosso ambiente é seguro, sem julgamentos, onde sua voz é importante e suas preocupações são ouvidas.
+                </p>
+              </div>
+            </div>
+
+            {/* Card 3 */}
+            <div className="group relative overflow-hidden rounded-[2rem] border border-blue-500/20 bg-blue-500/5 backdrop-blur-sm p-8 hover:bg-blue-500/10 transition-all duration-300 md:lg:col-span-2">
+              <div className="absolute -top-20 -right-20 w-40 h-40 bg-blue-500/20 rounded-full blur-2xl group-hover:bg-blue-500/30 transition-colors duration-300"></div>
+              
+              <div className="relative z-10 space-y-4">
+                <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-blue-500/20 group-hover:bg-blue-500/30 transition-all duration-300 group-hover:scale-110">
+                  <BookOpen size={32} className="text-blue-400" />
+                </div>
+                <h3 className="font-fredoka text-2xl font-bold text-white">Recursos disponíveis</h3>
+                <div className="grid sm:grid-cols-2 gap-4 pt-2">
+                  <div className="flex items-start gap-3 p-3 rounded-xl bg-white/5">
+                    <div className="w-2 h-2 rounded-full bg-blue-400 mt-2"></div>
+                    <p className="text-white/80 text-sm">Atendimento com psicólogos especializados</p>
+                  </div>
+                  <div className="flex items-start gap-3 p-3 rounded-xl bg-white/5">
+                    <div className="w-2 h-2 rounded-full bg-blue-400 mt-2"></div>
+                    <p className="text-white/80 text-sm">Grupos de apoio entre alunos</p>
+                  </div>
+                  <div className="flex items-start gap-3 p-3 rounded-xl bg-white/5">
+                    <div className="w-2 h-2 rounded-full bg-blue-400 mt-2"></div>
+                    <p className="text-white/80 text-sm">Técnicas de gerenciamento de estresse</p>
+                  </div>
+                  <div className="flex items-start gap-3 p-3 rounded-xl bg-white/5">
+                    <div className="w-2 h-2 rounded-full bg-blue-400 mt-2"></div>
+                    <p className="text-white/80 text-sm">Acompanhamento individualizado</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Mensagem especial */}
+          <div className="mt-16 rounded-[2.5rem] bg-gradient-to-r from-purple-500/10 via-pink-500/10 to-blue-500/10 border border-white/10 p-8 md:p-12">
+            <div className="flex flex-col md:flex-row items-center gap-8">
+              <div className="flex-shrink-0">
+                <div className="w-20 h-20 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
+                  <Heart size={40} className="text-white" />
+                </div>
+              </div>
+              <div className="text-center md:text-left space-y-4">
+                <h3 className="font-fredoka text-2xl md:text-3xl font-bold text-white">Você não está sozinho</h3>
+                <p className="text-white/70 text-lg leading-relaxed max-w-2xl">
+                  Se você está passando por um momento difícil, sabe que pode contar com a gente. 
+                  Conversar sobre o que sente é um sinal de força, não de fraqueza. 
+                  <span className="text-purple-400 font-semibold">Estamos aqui para ouvir você.</span>
+                </p>
+              </div>
+              <button 
+                onClick={() => setIsChatOpen(true)}
+                className="flex-shrink-0 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-400 hover:to-pink-400 text-white px-8 py-4 rounded-full font-fredoka font-bold transition-all duration-300 shadow-lg shadow-purple-500/20 active:scale-95"
+              >
+                Quer conversar?
+              </button>
+            </div>
           </div>
         </div>
       </section>
+
+      <ChatAI isOpen={isChatOpen} onClose={() => setIsChatOpen(false)} />
 
       <style>{`
         @keyframes slideUp {
@@ -266,8 +358,31 @@ export default function Comunity() {
           from { opacity: 0; }
           to { opacity: 1; }
         }
+        @keyframes faq-open {
+          from {
+            opacity: 0;
+            transform: translateY(-10px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        @keyframes faq-close {
+          from {
+            opacity: 1;
+            transform: translateY(0);
+          }
+          to {
+            opacity: 0;
+            transform: translateY(-10px);
+          }
+        }
         .animate-fade-in {
           animation: fade-in 0.3s ease-out;
+        }
+        .animate-faq-open {
+          animation: faq-open 0.3s ease-out forwards;
         }
       `}</style>
     </main>

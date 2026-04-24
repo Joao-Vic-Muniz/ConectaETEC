@@ -28,11 +28,6 @@ export default function Home() {
         <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-screen-2xl min-h-[50vh] md:min-h-[60vh] gap-8 md:gap-16 bg-gradient-to-br from-white/[0.08] via-white/[0.04] to-white/[0.02] backdrop-blur-xl p-6 md:p-12 lg:p-16 rounded-[2rem] md:rounded-[2.5rem] shadow-[0_25px_100px_-15px_rgba(6,182,212,0.3)] border border-cyan-500/20 relative z-10 hover:border-cyan-400/40 transition-all duration-500">
           <div className="flex-1 z-10 space-y-6 md:space-y-8 text-center md:text-left">
             <div className="space-y-3">
-              <div className="inline-block mb-6">
-                <span className="px-4 py-2 rounded-full bg-gradient-to-r from-cyan-400/20 to-blue-400/20 border border-cyan-400/40 text-cyan-300 text-sm tracking-wider uppercase font-semibold shadow-lg shadow-cyan-500/10">
-                  ✨ Conecta ETEC
-                </span>
-              </div>
 
               <h1 className="font-fredoka text-5xl md:text-7xl lg:text-8xl xl:text-9xl text-white font-black leading-tight tracking-tighter bg-clip-text text-transparent bg-gradient-to-b from-white via-cyan-200 to-blue-400 animate-in fade-in slide-in-from-bottom-4 duration-1000">
                 Conecta{" "}
@@ -204,76 +199,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      <style>{`
-        @keyframes float {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-20px); }
-        }
-        .animate-float { animation: float 6s ease-in-out infinite; }
-
-        .delay-700 {
-          animation-delay: 0.7s;
-        }
-
-        .delay-1000 {
-          animation-delay: 1s;
-        }
-
-        .bg-grid-pattern {
-          background-image:
-            linear-gradient(0deg, transparent 24%, rgba(255, 255, 255, 0.05) 25%, rgba(255, 255, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, 0.05) 75%, rgba(255, 255, 255, 0.05) 76%, transparent 77%, transparent),
-            linear-gradient(90deg, transparent 24%, rgba(255, 255, 255, 0.05) 25%, rgba(255, 255, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, 0.05) 75%, rgba(255, 255, 255, 0.05) 76%, transparent 77%, transparent);
-          background-size: 60px 60px;
-        }
-
-        /* Gradient text */
-        .bg-clip-text {
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-        }
-
-        /* Smooth scroll */
-        html {
-          scroll-behavior: smooth;
-        }
-
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-          width: 12px;
-        }
-
-        ::-webkit-scrollbar-track {
-          background: rgba(255, 255, 255, 0.02);
-        }
-
-        ::-webkit-scrollbar-thumb {
-          background: rgba(6, 182, 212, 0.3);
-          border-radius: 6px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-          background: rgba(6, 182, 212, 0.5);
-        }
-
-        @supports (animation-timeline: view()) {
-          .animate-in {
-            animation: slideInUp 0.8s ease-out forwards;
-          }
-        }
-
-        @keyframes slideInUp {
-          from {
-            opacity: 0;
-            transform: translateY(40px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-      `}</style>
     </div>
   );
 }
