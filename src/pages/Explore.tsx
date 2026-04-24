@@ -1,4 +1,4 @@
-import { Search, Code, Briefcase, Award, Zap, Globe, Users, X, Plus } from "lucide-react";
+import { Search, Code, Briefcase, Award, Zap, Globe, Users, X } from "lucide-react";
 import { useState } from "react";
 
 const catConfig = {
