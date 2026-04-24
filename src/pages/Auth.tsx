@@ -1,362 +1,284 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Eye, EyeOff, Mail, Lock, User, ArrowRight, Globe } from 'lucide-react';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import {
+  Eye,
+  EyeOff,
+  Mail,
+  Lock,
+  User,
+  ArrowRight,
+  Globe,
+} from "lucide-react";
 
-const Auth = () => {
-  const [isLogin, setIsLogin] = useState(true);
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    password: '',
-    confirmPassword: ''
-  });
-
+export default function Auth() {
   const navigate = useNavigate();
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData(prev => ({
-      ...prev,
-      [e.target.name]: e.target.value
+  const [isLogin, setIsLogin] = useState(true);
+  const [loading, setLoading] = useState(false);
+
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirm, setShowConfirm] = useState(false);
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData((old) => ({
+      ...old,
+      [e.target.name]: e.target.value,
     }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsLoading(true);
+    setLoading(true);
 
-    // Simular API call
     setTimeout(() => {
-      setIsLoading(false);
-      if (isLogin) {
-        navigate('/');
-      } else {
-        setIsLogin(true);
-      }
-    }, 1500);
+      setLoading(false);
+
+      if (isLogin) navigate("/");
+      else setIsLogin(true);
+    }, 1200);
   };
 
-  const toggleMode = () => {
-    setIsLogin(!isLogin);
-    setFormData({
-      name: '',
-      email: '',
-      password: '',
-      confirmPassword: ''
-    });
-  };
+  const inputStyle =
+    "w-full h-14 rounded-2xl bg-white/[0.03] border border-white/[0.08] px-12 pr-12 text-white placeholder:text-white/30 outline-none focus:border-primary-light/70 focus:ring-2 focus:ring-primary-light/15 transition-all";
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-[#0a0a0a] via-[#1a1a2e] to-[#16213e] flex items-center justify-center p-4 relative overflow-hidden">
-      {/* Enhanced Background Effects */}
-      <div className="absolute inset-0">
-        {/* Floating orbs with improved animations */}
-        <div className="absolute top-1/4 left-1/4 w-80 h-80 bg-primary/15 rounded-full blur-3xl animate-pulse opacity-60"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-3xl animate-pulse delay-1000 opacity-50"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-150 h-150 bg-gradient-radial from-primary/8 via-transparent to-transparent rounded-full blur-2xl"></div>
-
-        {/* Additional floating elements for more life */}
-        <div className="absolute top-1/6 right-1/3 w-32 h-32 bg-accent/20 rounded-full blur-xl animate-bounce opacity-30" style={{animationDuration: '4s'}}></div>
-        <div className="absolute bottom-1/3 left-1/6 w-24 h-24 bg-primary/25 rounded-full blur-lg animate-pulse opacity-40" style={{animationDelay: '2s'}}></div>
-        <div className="absolute top-2/3 right-1/6 w-40 h-40 bg-secondary/15 rounded-full blur-2xl animate-pulse opacity-25" style={{animationDelay: '3s'}}></div>
-
-        {/* Subtle grid pattern */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-size-[50px_50px] opacity-20"></div>
+    <div className="min-h-screen text-white flex items-start justify-center px-4 pt-16 pb-10 relative overflow-y-auto overflow-x-hidden bg-gradient-to-b from-[#0b1220] via-[#0f172a] to-[#111827]">
+      {/* BG */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-0 right-[-120px] w-96 h-96 rounded-full bg-primary/20 blur-[140px] animate-pulse" />
+        <div className="absolute top-1/3 left-[-80px] w-80 h-80 rounded-full bg-primary-light/10 blur-[140px] animate-pulse delay-1000" />
+        <div className="absolute bottom-0 right-1/4 w-80 h-80 rounded-full bg-accent/10 blur-[150px] animate-pulse delay-500" />
       </div>
 
-      <div className="relative z-10 w-full max-w-4xl animate-fade-in-up">
-        {/* Enhanced Header */}
-        <div className="text-center mb-8 animate-slide-down">
-          <h1 className="text-4xl md:text-6xl font-bold font-fredoka text-white mb-4 animate-glow">
-            Conecta<span className="text-primary animate-pulse-glow">ETEC</span>
-          </h1>
-          <p className="text-gray-300 text-lg md:text-xl animate-fade-in" style={{animationDelay: '0.3s'}}>
-            {isLogin ? 'Bem-vindo de volta!' : 'Junte-se à nossa comunidade'}
-          </p>
-          <div className="mt-4 flex justify-center">
-            <div className="w-24 h-1 bg-linear-to-r from-transparent via-primary to-transparent rounded-full animate-scale-in" style={{animationDelay: '0.6s'}}></div>
+      {/* CARD */}
+      <div className="relative z-10 w-full max-w-6xl grid lg:grid-cols-2 rounded-3xl overflow-hidden border border-white/[0.08] bg-white/[0.04] backdrop-blur-2xl shadow-[0_25px_80px_-15px_rgba(47,111,182,0.30)] min-h-[760px] mt-10">
+        {/* LEFT */}
+        <div className="hidden lg:flex flex-col min-h-[760px] p-12 border-r border-white/[0.06] relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-primary-light/10" />
+
+          <div className="relative z-10 flex flex-col h-full justify-between gap-10">
+            {/* TOP */}
+            <div>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary-light text-xs font-bold uppercase tracking-widest mb-10">
+                Plataforma Oficial
+              </div>
+
+              <h1 className="font-fredoka font-bold text-5xl xl:text-6xl leading-[1.15] pt-2">
+                <span className="block text-white">Acesse</span>
+
+                <span className="block text-primary">
+                  sua conta
+                </span>
+              </h1>
+
+              <p className="text-white/55 text-lg max-w-md leading-relaxed mt-8">
+                Entre ou crie sua conta para explorar projetos,
+                oportunidades e conexões dentro da plataforma.
+              </p>
+            </div>
+
+            {/* BOTTOM */}
+            <div className="grid grid-cols-2 gap-4">
+              {[
+                ["+100", "Usuários"],
+                ["10", "Projetos"],
+                ["4", "Cursos"],
+                ["24h", "Online"],
+              ].map((item, i) => (
+                <div
+                  key={i}
+                  className="p-5 rounded-2xl bg-white/[0.03] border border-white/[0.06] hover:border-primary-light/40 transition-all duration-300 hover:-translate-y-1"
+                >
+                  <p className="text-white font-semibold text-xl">
+                    {item[0]}
+                  </p>
+                  <span className="text-white/45 text-sm">
+                    {item[1]}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
-        {/* Main Container */}
-        <div className="relative">
-          {/* Enhanced Toggle Buttons */}
-          <div className="flex justify-center mb-8 animate-slide-up" style={{animationDelay: '0.2s'}}>
-            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-1.5 flex shadow-2xl shadow-black/20 hover:shadow-3xl hover:shadow-black/30 transition-all duration-500">
-              <button
-                onClick={() => setIsLogin(true)}
-                className={`relative px-8 py-3 rounded-xl font-fredoka font-bold transition-all duration-500 overflow-hidden ${
-                  isLogin
-                    ? 'bg-primary text-white shadow-lg shadow-primary/30 scale-105'
-                    : 'text-gray-400 hover:text-white hover:scale-105'
-                }`}
-              >
-                <span className="relative z-10">Entrar</span>
-                {isLogin && (
-                  <div className="absolute inset-0 bg-linear-to-r from-primary/20 to-primary/40 animate-pulse"></div>
-                )}
-              </button>
-              <button
-                onClick={() => setIsLogin(false)}
-                className={`relative px-8 py-3 rounded-xl font-fredoka font-bold transition-all duration-500 overflow-hidden ${
-                  !isLogin
-                    ? 'bg-primary text-white shadow-lg shadow-primary/30 scale-105'
-                    : 'text-gray-400 hover:text-white hover:scale-105'
-                }`}
-              >
-                <span className="relative z-10">Cadastrar</span>
-                {!isLogin && (
-                  <div className="absolute inset-0 bg-linear-to-r from-primary/20 to-primary/40 animate-pulse"></div>
-                )}
-              </button>
-            </div>
-          </div>
-
-          {/* Enhanced Form Container */}
-          <div className="relative overflow-hidden rounded-3xl">
-            <div
-              className={`flex transition-all duration-700 ease-out ${
-                isLogin ? 'translate-x-0' : '-translate-x-full'
+        {/* RIGHT */}
+        <div className="p-6 md:p-10 min-h-[760px] flex flex-col">
+          {/* TABS */}
+          <div className="flex bg-white/[0.03] p-1 rounded-2xl mb-8 border border-white/[0.08]">
+            <button
+              onClick={() => setIsLogin(true)}
+              className={`flex-1 h-12 rounded-xl font-fredoka font-bold transition-all ${
+                isLogin
+                  ? "bg-gradient-to-r from-primary to-primary-light text-white shadow-lg shadow-primary/30"
+                  : "text-white/40 hover:text-white"
               }`}
             >
-              {/* Login Form */}
-              <div className="w-full shrink-0 animate-slide-in-left" style={{animationDelay: isLogin ? '0.4s' : '0s'}}>
-                <div className="bg-white/8 backdrop-blur-2xl border border-white/15 rounded-3xl p-8 shadow-xl shadow-black/10 hover:shadow-2xl hover:shadow-black/15 transition-all duration-500 hover:border-white/20">
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="animate-slide-in-up" style={{animationDelay: '0.5s'}}>
-                      <label className="block text-white font-medium mb-2 transition-colors duration-300">Email</label>
-                      <div className="relative group">
-                        <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 transition-all duration-300 group-focus-within:text-primary group-focus-within:scale-110" />
-                        <input
-                          type="email"
-                          name="email"
-                          value={formData.email}
-                          onChange={handleInputChange}
-                          className="w-full pl-12 pr-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 focus:bg-white/15 transition-all duration-300 hover:border-white/30"
-                          placeholder="seu@email.com"
-                          required
-                        />
-                      </div>
-                    </div>
+              Entrar
+            </button>
 
-                    <div className="animate-slide-in-up" style={{animationDelay: '0.6s'}}>
-                      <label className="block text-white font-medium mb-2 transition-colors duration-300">Senha</label>
-                      <div className="relative group">
-                        <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 transition-all duration-300 group-focus-within:text-primary group-focus-within:scale-110" />
-                        <input
-                          type={showPassword ? 'text' : 'password'}
-                          name="password"
-                          value={formData.password}
-                          onChange={handleInputChange}
-                          className="w-full pl-12 pr-12 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 focus:bg-white/15 transition-all duration-300 hover:border-white/30"
-                          placeholder="••••••••"
-                          required
-                        />
-                        <button
-                          type="button"
-                          onClick={() => setShowPassword(!showPassword)}
-                          className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-primary transition-all duration-300 hover:scale-110"
-                        >
-                          {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
-                        </button>
-                      </div>
-                    </div>
+            <button
+              onClick={() => setIsLogin(false)}
+              className={`flex-1 h-12 rounded-xl font-fredoka font-bold transition-all ${
+                !isLogin
+                  ? "bg-gradient-to-r from-primary to-primary-light text-white shadow-lg shadow-primary/30"
+                  : "text-white/40 hover:text-white"
+              }`}
+            >
+              Criar Conta
+            </button>
+          </div>
 
-                    <div className="flex items-center justify-between">
-                      <label className="flex items-center">
-                        <input type="checkbox" className="mr-2 accent-primary" />
-                        <span className="text-gray-300 text-sm">Lembrar-me</span>
-                      </label>
-                      <a href="#" className="text-primary hover:text-primary-light text-sm transition-colors">
-                        Esqueceu a senha?
-                      </a>
-                    </div>
+          {/* TITLE */}
+          <h2 className="font-fredoka font-bold text-4xl text-white mb-2">
+            {isLogin ? "Bem-vindo de volta" : "Criar sua conta"}
+          </h2>
 
-                    <button
-                      type="submit"
-                      disabled={isLoading}
-                      className="w-full relative bg-primary hover:bg-primary-light text-white py-3 rounded-xl font-fredoka font-bold transition-all duration-300 shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 overflow-hidden group"
-                    >
-                      <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-primary/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                      <span className="relative z-10 flex items-center justify-center gap-2">
-                        {isLoading ? (
-                          <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
-                        ) : (
-                          <>
-                            Entrar
-                            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-                          </>
-                        )}
-                      </span>
-                    </button>
+          <p className="text-white/45 mb-8">
+            {isLogin
+              ? "Entre para continuar na plataforma."
+              : "Cadastre-se para começar agora."}
+          </p>
 
-                    <div className="relative my-6">
-                      <div className="absolute inset-0 flex items-center">
-                        <div className="w-full border-t border-white/20"></div>
-                      </div>
-                      <div className="relative flex justify-center text-sm">
-                        <span className="px-2 bg-[#121212] text-gray-400">ou</span>
-                      </div>
-                    </div>
-
-                    <button
-                      type="button"
-                      className="w-full bg-white/10 hover:bg-white/20 text-white py-3 rounded-xl font-medium transition-all duration-300 border border-white/20 flex items-center justify-center gap-3"
-                    >
-                      <Globe className="w-5 h-5" />
-                      Continuar com Google
-                    </button>
-                  </form>
-                </div>
+          {/* FORM */}
+          <form
+            onSubmit={handleSubmit}
+            className="space-y-5 flex flex-col flex-1"
+          >
+            {!isLogin && (
+              <div className="relative">
+                <User className="absolute left-4 top-4.5 w-5 h-5 text-primary-light" />
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Nome completo"
+                  value={formData.name}
+                  onChange={handleChange}
+                  className={inputStyle}
+                  required
+                />
               </div>
+            )}
 
-              {/* Register Form */}
-              <div className="w-full shrink-0 animate-slide-in-right" style={{animationDelay: !isLogin ? '0.4s' : '0s'}}>
-                <div className="bg-white/8 backdrop-blur-2xl border border-white/15 rounded-3xl p-8 shadow-xl shadow-black/10 hover:shadow-2xl hover:shadow-black/15 transition-all duration-500 hover:border-white/20">
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="animate-slide-in-up" style={{animationDelay: '0.5s'}}>
-                      <label className="block text-white font-medium mb-2 transition-colors duration-300">Nome Completo</label>
-                      <div className="relative group">
-                        <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 transition-all duration-300 group-focus-within:text-primary group-focus-within:scale-110" />
-                        <input
-                          type="text"
-                          name="name"
-                          value={formData.name}
-                          onChange={handleInputChange}
-                          className="w-full pl-12 pr-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 focus:bg-white/15 transition-all duration-300 hover:border-white/30"
-                          placeholder="Seu nome completo"
-                          required
-                        />
-                      </div>
-                    </div>
-
-                    <div className="animate-slide-in-up" style={{animationDelay: '0.6s'}}>
-                      <label className="block text-white font-medium mb-2 transition-colors duration-300">Email</label>
-                      <div className="relative group">
-                        <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 transition-all duration-300 group-focus-within:text-primary group-focus-within:scale-110" />
-                        <input
-                          type="email"
-                          name="email"
-                          value={formData.email}
-                          onChange={handleInputChange}
-                          className="w-full pl-12 pr-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 focus:bg-white/15 transition-all duration-300 hover:border-white/30"
-                          placeholder="seu@email.com"
-                          required
-                        />
-                      </div>
-                    </div>
-
-                    <div className="animate-slide-in-up" style={{animationDelay: '0.7s'}}>
-                      <label className="block text-white font-medium mb-2 transition-colors duration-300">Senha</label>
-                      <div className="relative group">
-                        <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 transition-all duration-300 group-focus-within:text-primary group-focus-within:scale-110" />
-                        <input
-                          type={showPassword ? 'text' : 'password'}
-                          name="password"
-                          value={formData.password}
-                          onChange={handleInputChange}
-                          className="w-full pl-12 pr-12 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 focus:bg-white/15 transition-all duration-300 hover:border-white/30"
-                          placeholder="••••••••"
-                          required
-                        />
-                        <button
-                          type="button"
-                          onClick={() => setShowPassword(!showPassword)}
-                          className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-primary transition-all duration-300 hover:scale-110"
-                        >
-                          {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
-                        </button>
-                      </div>
-                    </div>
-
-                    <div className="animate-slide-in-up" style={{animationDelay: '0.8s'}}>
-                      <label className="block text-white font-medium mb-2 transition-colors duration-300">Confirmar Senha</label>
-                      <div className="relative group">
-                        <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 transition-all duration-300 group-focus-within:text-primary group-focus-within:scale-110" />
-                        <input
-                          type={showConfirmPassword ? 'text' : 'password'}
-                          name="confirmPassword"
-                          value={formData.confirmPassword}
-                          onChange={handleInputChange}
-                          className="w-full pl-12 pr-12 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 focus:bg-white/15 transition-all duration-300 hover:border-white/30"
-                          placeholder="••••••••"
-                          required
-                        />
-                        <button
-                          type="button"
-                          onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                          className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-primary transition-all duration-300 hover:scale-110"
-                        >
-                          {showConfirmPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
-                        </button>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start">
-                      <input type="checkbox" className="mt-1 mr-3 accent-primary" required />
-                      <span className="text-gray-300 text-sm">
-                        Concordo com os <a href="#" className="text-primary hover:text-primary-light">Termos de Uso</a> e <a href="#" className="text-primary hover:text-primary-light">Política de Privacidade</a>
-                      </span>
-                    </div>
-
-                    <button
-                      type="submit"
-                      disabled={isLoading}
-                      className="w-full relative bg-primary hover:bg-primary-light text-white py-3 rounded-xl font-fredoka font-bold transition-all duration-300 shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 overflow-hidden group"
-                    >
-                      <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-primary/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                      <span className="relative z-10 flex items-center justify-center gap-2">
-                        {isLoading ? (
-                          <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
-                        ) : (
-                          <>
-                            Criar Conta
-                            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-                          </>
-                        )}
-                      </span>
-                    </button>
-
-                    <div className="relative my-6">
-                      <div className="absolute inset-0 flex items-center">
-                        <div className="w-full border-t border-white/20"></div>
-                      </div>
-                      <div className="relative flex justify-center text-sm">
-                        <span className="px-2 bg-[#121212] text-gray-400">ou</span>
-                      </div>
-                    </div>
-
-                    <button
-                      type="button"
-                      className="w-full bg-white/10 hover:bg-white/20 text-white py-3 rounded-xl font-medium transition-all duration-300 border border-white/20 flex items-center justify-center gap-3"
-                    >
-                      <Globe className="w-5 h-5" />
-                      Cadastrar com Google
-                    </button>
-                  </form>
-                </div>
-              </div>
+            <div className="relative">
+              <Mail className="absolute left-4 top-4.5 w-5 h-5 text-primary-light" />
+              <input
+                type="email"
+                name="email"
+                placeholder="Seu email"
+                value={formData.email}
+                onChange={handleChange}
+                className={inputStyle}
+                required
+              />
             </div>
-          </div>
 
-          {/* Footer */}
-          <div className="text-center mt-8">
-            <p className="text-gray-400">
-              {isLogin ? 'Não tem uma conta?' : 'Já tem uma conta?'}
+            <div className="relative">
+              <Lock className="absolute left-4 top-4.5 w-5 h-5 text-primary-light" />
+
+              <input
+                type={showPassword ? "text" : "password"}
+                name="password"
+                placeholder="Sua senha"
+                value={formData.password}
+                onChange={handleChange}
+                className={inputStyle}
+                required
+              />
+
               <button
-                onClick={toggleMode}
-                className="text-primary hover:text-primary-light font-medium ml-2 transition-colors"
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-4 top-4 text-white/40 hover:text-primary-light"
               >
-                {isLogin ? 'Cadastre-se' : 'Entre aqui'}
+                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
               </button>
-            </p>
-          </div>
+            </div>
+
+            {!isLogin && (
+              <div className="relative">
+                <Lock className="absolute left-4 top-4.5 w-5 h-5 text-primary-light" />
+
+                <input
+                  type={showConfirm ? "text" : "password"}
+                  name="confirmPassword"
+                  placeholder="Confirmar senha"
+                  value={formData.confirmPassword}
+                  onChange={handleChange}
+                  className={inputStyle}
+                  required
+                />
+
+                <button
+                  type="button"
+                  onClick={() => setShowConfirm(!showConfirm)}
+                  className="absolute right-4 top-4 text-white/40 hover:text-primary-light"
+                >
+                  {showConfirm ? <EyeOff size={18} /> : <Eye size={18} />}
+                </button>
+              </div>
+            )}
+
+            {isLogin && (
+              <div className="text-right">
+                <button
+                  type="button"
+                  className="text-sm text-primary-light hover:text-accent"
+                >
+                  Esqueceu a senha?
+                </button>
+              </div>
+            )}
+
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full h-14 rounded-2xl bg-gradient-to-r from-primary to-primary-light hover:from-primary-light hover:to-primary text-white font-fredoka font-bold transition-all duration-300 hover:scale-[1.02] flex items-center justify-center gap-2 shadow-lg shadow-primary/30"
+            >
+              {loading ? (
+                <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+              ) : (
+                <>
+                  {isLogin ? "Entrar" : "Criar Conta"}
+                  <ArrowRight size={18} />
+                </>
+              )}
+            </button>
+
+            <div className="relative py-2">
+              <div className="border-t border-white/[0.08]" />
+              <span className="absolute left-1/2 -translate-x-1/2 -top-1 bg-[#0f172a] px-4 text-sm text-white/30">
+                ou
+              </span>
+            </div>
+
+            <button
+              type="button"
+              className="w-full h-14 rounded-2xl bg-white/[0.03] border border-white/[0.08] hover:border-primary-light/40 hover:bg-white/[0.05] transition-all flex items-center justify-center gap-3"
+            >
+              <Globe size={18} />
+              Continuar com Google
+            </button>
+          </form>
+
+          <p className="text-center text-white/40 mt-auto pt-8">
+            {isLogin ? "Não possui conta?" : "Já possui conta?"}
+
+            <button
+              onClick={() => setIsLogin(!isLogin)}
+              className="ml-2 text-primary-light hover:text-accent font-semibold"
+            >
+              {isLogin ? "Cadastrar" : "Entrar"}
+            </button>
+          </p>
         </div>
       </div>
     </div>
   );
-};
-
-export default Auth;
+}
