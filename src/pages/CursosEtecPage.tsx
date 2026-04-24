@@ -70,34 +70,6 @@ const courses: Course[] = [
 ];
 
 export default function CursosEtecPage() {
-  const easeInOutQuad = (t: number) =>
-    t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
-
-  const smoothScrollTo = (element: HTMLElement, duration = 1000) => {
-    const start = window.pageYOffset;
-    const end = element.offsetTop;
-    const distance = end - start;
-    let startTime: number | null = null;
-
-    const animation = (currentTime: number) => {
-      if (startTime === null) startTime = currentTime;
-
-      const timeElapsed = currentTime - startTime;
-      const progress = Math.min(timeElapsed / duration, 1);
-      const ease = easeInOutQuad(progress);
-
-      window.scrollTo(0, start + distance * ease);
-
-      if (progress < 1) requestAnimationFrame(animation);
-    };
-
-    requestAnimationFrame(animation);
-  };
-
-  const scrollToSection = (slug: string) => {
-    const section = document.getElementById(slug);
-    if (section) smoothScrollTo(section, 1200);
-  };
 
   return (
     <main className="bg-gradient-to-b from-[#07111f] via-[#0a1628] to-[#07111f] text-white overflow-hidden relative">
@@ -123,7 +95,7 @@ export default function CursosEtecPage() {
           </p>
 
           <button
-            onClick={() => scrollToSection(courses[0].slug)}
+            onClick={() => document.getElementById(courses[0].slug)?.scrollIntoView({ behavior: 'smooth' })}
             className="group inline-flex items-center gap-3 px-6 sm:px-8 py-4 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white font-bold shadow-lg shadow-cyan-500/40 transition-all duration-300 hover:scale-105"
           >
             Explorar cursos
@@ -196,7 +168,7 @@ export default function CursosEtecPage() {
 
               {index < courses.length - 1 && (
                 <button
-                  onClick={() => scrollToSection(courses[index + 1].slug)}
+                  onClick={() => document.getElementById(courses[index + 1].slug)?.scrollIntoView({ behavior: 'smooth' })}
                   className="group w-full sm:w-fit inline-flex justify-center items-center gap-2 px-7 py-4 rounded-xl bg-white/10 border border-white/20 hover:border-cyan-400/60 hover:bg-cyan-500/10 transition-all duration-300 font-semibold"
                 >
                   Próximo curso

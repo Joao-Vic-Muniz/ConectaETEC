@@ -6,7 +6,6 @@ export default function Home() {
 
   return (
     <div className="w-full font-quicksand bg-gradient-to-b from-[#07111f] via-[#0a1628] to-[#07111f] text-white overflow-hidden relative">
-      {/* Global Animated Background */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-cyan-500/15 rounded-full blur-[150px] animate-pulse" />
         <div className="absolute top-1/3 right-1/4 w-80 h-80 bg-blue-500/10 rounded-full blur-[140px] animate-pulse delay-700" />
@@ -17,10 +16,8 @@ export default function Home() {
         id="home"
         className="min-h-screen flex items-center justify-center overflow-hidden px-4 pt-32 pb-16 md:py-16 relative"
       >
-        {/* Animated Background Grid */}
         <div className="absolute inset-0 bg-grid-pattern opacity-5" />
 
-        {/* Enhanced Background Lights */}
         <div className="absolute top-20 left-10 w-96 h-96 bg-cyan-500/25 rounded-full blur-[130px] animate-float" />
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-500/15 rounded-full blur-[150px] animate-float" style={{ animationDelay: "2s" }} />
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-purple-500/10 rounded-full blur-[150px] animate-float" style={{ animationDelay: "4s" }} />
@@ -77,7 +74,6 @@ export default function Home() {
 
       {/* Explorar */}
       <section id="explorar" className="py-16 md:py-24 relative">
-        {/* Enhanced Background Effects */}
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/[0.02] to-transparent" />
           <div className="absolute top-16 right-16 w-64 h-64 bg-cyan-500/10 rounded-full blur-[120px] animate-float" />
@@ -98,19 +94,14 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Card Eventos */}
             <div className="group relative overflow-hidden bg-gradient-to-br from-white/[0.08] via-white/[0.04] to-white/[0.02] backdrop-blur-xl p-8 rounded-3xl border border-cyan-500/20 hover:border-cyan-400/60 hover:bg-gradient-to-br hover:from-cyan-500/10 hover:via-blue-500/5 hover:to-purple-500/5 transition-all duration-500 hover:-translate-y-2 shadow-2xl hover:shadow-cyan-500/30">
-              {/* Animated Gradient Border */}
               <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 p-[1px] bg-gradient-to-br from-cyan-500 via-blue-500 to-purple-500" style={{ zIndex: -1 }} />
 
-              {/* Glow Background on Hover */}
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-cyan-500/10 via-transparent to-blue-500/10" style={{ opacity: 0.05, borderRadius: '1.5rem' }} />
 
-              {/* Top Accent Line */}
               <div className="absolute top-0 left-0 h-1.5 w-full bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 opacity-70 group-hover:opacity-100" />
 
               <div className="relative z-10 space-y-4">
-                {/* Icon Circle with Animation */}
                 <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-500 p-0.5">
                   <div className="w-full h-full rounded-2xl bg-[#0a1628] flex items-center justify-center text-cyan-300 group-hover:text-white transition-colors shadow-inner">
                     <CalendarDays className="w-6 h-6" />
@@ -126,24 +117,18 @@ export default function Home() {
                   Semana Paulo Freire, TechWeek e Hackaton.
                 </p>
 
-                {/* Floating Icon on Hover */}
                 <div className="absolute -top-12 -right-12 w-32 h-32 rounded-full bg-gradient-to-br from-white/20 to-transparent blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
             </div>
 
-            {/* Card Matérias */}
             <div className="group relative overflow-hidden bg-gradient-to-br from-white/[0.08] via-white/[0.04] to-white/[0.02] backdrop-blur-xl p-8 rounded-3xl border border-cyan-500/20 hover:border-cyan-400/60 hover:bg-gradient-to-br hover:from-cyan-500/10 hover:via-blue-500/5 hover:to-purple-500/5 transition-all duration-500 hover:-translate-y-2 shadow-2xl hover:shadow-cyan-500/30">
-              {/* Animated Gradient Border */}
               <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 p-[1px] bg-gradient-to-br from-cyan-500 via-blue-500 to-purple-500" style={{ zIndex: -1 }} />
 
-              {/* Glow Background on Hover */}
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-cyan-500/10 via-transparent to-blue-500/10" style={{ opacity: 0.05, borderRadius: '1.5rem' }} />
 
-              {/* Top Accent Line */}
               <div className="absolute top-0 left-0 h-1.5 w-full bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 opacity-70 group-hover:opacity-100" />
 
               <div className="relative z-10 space-y-4">
-                {/* Icon Circle with Animation */}
                 <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-500 p-0.5">
                   <div className="w-full h-full rounded-2xl bg-[#0a1628] flex items-center justify-center text-cyan-300 group-hover:text-white transition-colors shadow-inner">
                     <BookOpen className="w-6 h-6" />
@@ -159,24 +144,19 @@ export default function Home() {
                   vendo alguns destaque sobre elas.
                 </p>
 
-                {/* Floating Icon on Hover */}
                 <div className="absolute -top-12 -right-12 w-32 h-32 rounded-full bg-gradient-to-br from-white/20 to-transparent blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
             </div>
 
-            {/* Card Excursões */}
             <div className="group relative overflow-hidden bg-gradient-to-br from-white/[0.08] via-white/[0.04] to-white/[0.02] backdrop-blur-xl p-8 rounded-3xl border border-cyan-500/20 hover:border-cyan-400/60 hover:bg-gradient-to-br hover:from-cyan-500/10 hover:via-blue-500/5 hover:to-purple-500/5 transition-all duration-500 hover:-translate-y-2 shadow-2xl hover:shadow-cyan-500/30 md:col-span-2 lg:col-span-1">
               {/* Animated Gradient Border */}
               <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 p-[1px] bg-gradient-to-br from-cyan-500 via-blue-500 to-purple-500" style={{ zIndex: -1 }} />
 
-              {/* Glow Background on Hover */}
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-cyan-500/10 via-transparent to-blue-500/10" style={{ opacity: 0.05, borderRadius: '1.5rem' }} />
 
-              {/* Top Accent Line */}
               <div className="absolute top-0 left-0 h-1.5 w-full bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 opacity-70 group-hover:opacity-100" />
 
               <div className="relative z-10 space-y-4">
-                {/* Icon Circle with Animation */}
                 <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-500 p-0.5">
                   <div className="w-full h-full rounded-2xl bg-[#0a1628] flex items-center justify-center text-cyan-300 group-hover:text-white transition-colors shadow-inner">
                     <Map className="w-6 h-6" />
@@ -192,7 +172,6 @@ export default function Home() {
                   como por exemplo a BGS e Hopi Hari.
                 </p>
 
-                {/* Floating Icon on Hover */}
                 <div className="absolute -top-12 -right-12 w-32 h-32 rounded-full bg-gradient-to-br from-white/20 to-transparent blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
             </div>
